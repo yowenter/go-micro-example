@@ -1,0 +1,6 @@
+bin
+pkg
+
+.vscode
+src/wuu.com/example/hello/*pb.go
+
