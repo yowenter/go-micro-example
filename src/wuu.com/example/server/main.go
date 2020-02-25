@@ -3,8 +3,10 @@ package main
 import (
 	"context"
 	"fmt"
+	etcd "github.com/micro/go-micro/v2/registry/etcd"
 
 	micro "github.com/micro/go-micro/v2"
+
 	proto "wuu.com/example/hello"
 )
 
@@ -23,8 +25,8 @@ func main() {
 	)
 
 	// Init will parse the command line flags.
-	service.Init()
-
+	reg := etcd.NewRegistry()
+	service.Init(micro.Registry(reg))
 	// Register handler
 	proto.RegisterGreeterHandler(service.Server(), new(Greeter))
 
